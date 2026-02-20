@@ -23,6 +23,11 @@ Route::middleware('auth')->group(function () {
     Route::put('transactions/{transaction}', [TransactionController::class , 'update'])->name('transactions.update');
     Route::delete('transactions/{transaction}', [TransactionController::class , 'destroy'])->name('transactions.destroy');
     Route::get('predictions', [PredictionController::class , 'index'])->name('predictions.index');
+
+    // Settings Routes
+    Route::get('settings', [\App\Http\Controllers\SettingsController::class , 'index'])->name('settings.index');
+    Route::post('settings/backup', [\App\Http\Controllers\SettingsController::class , 'backup'])->name('settings.backup');
+    Route::post('settings/restore', [\App\Http\Controllers\SettingsController::class , 'restore'])->name('settings.restore');
 });
 
 Auth::routes();
